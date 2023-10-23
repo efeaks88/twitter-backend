@@ -32,4 +32,5 @@ public class CustomUserDetailsServiceImplementation implements UserDetailsServic
                 user.getPassword(),
                 authorities);
     }
+
 }
