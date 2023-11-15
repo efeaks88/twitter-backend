@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,9 @@ public class Tweet {
     private User user;
 
     private String content;
-
+    private String image;
+    private String video;
+    //video silindiğinde likelarda silinmeli.
     @OneToMany(mappedBy = "tweet",cascade = CascadeType.ALL)
     @Builder.Default
     private List<Like> likes=new ArrayList<>();
@@ -43,5 +46,6 @@ public class Tweet {
     private Boolean isReply;
 
     private Boolean isTweet;
+    private LocalDate createdAt;
 
 }
