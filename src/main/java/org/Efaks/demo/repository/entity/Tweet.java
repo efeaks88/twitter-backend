@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,6 @@ public class Tweet {
     private Boolean isReply;
 
     private Boolean isTweet;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
 }

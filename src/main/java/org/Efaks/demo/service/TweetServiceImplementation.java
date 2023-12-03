@@ -76,20 +76,22 @@ public class TweetServiceImplementation implements TweetService {
         tweet.setContent(req.getContent());
         tweet.setCreatedAt(LocalDate.now());
         tweet.setImage(req.getImage());
-        tweet.setIsReply(false);
-        tweet.setIsTweet(true);
+        tweet.setIsReply(true);
+        tweet.setIsTweet(false);
         tweet.setUser(user);
         tweet.setReplyFor(replyFor);
-        return null;
+        Tweet savedReply= tweetRepository.save(tweet);
+        tweet.getReplyTweets().add(savedReply);
+        return replyFor;
     }
 
     @Override
     public List<Tweet> getUserTwit(User user) {
-        return null;
+        return tweetRepository.findByRetweetUserContainsOrUser_IdAndIsTweetTrueOrderByCreatedAtDesc(user,user.getId());
     }
 
     @Override
     public List<Tweet> findByLikesContainsUser(User user) {
-        return null;
+        return tweetRepository.findByLikesUser_id(user.getId());
     }
 }
